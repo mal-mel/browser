@@ -27,10 +27,6 @@ class Browser(QtWidgets.QMainWindow):
         self.ui.webView.urlChanged.connect(self.update_urlbar)
         self.ui.webView.titleChanged.connect(self.update_title)
 
-        open_file_action = QAction(QIcon(os.path.join('images', 'disk--arrow.png')), "Open file...", self)
-        open_file_action.setStatusTip("Open from file")
-        open_file_action.triggered.connect(self.open_file)
-
     @staticmethod
     def make_true_url(url):
         return QUrl(url) if QUrl(url).scheme() else QUrl('http://' + url)
@@ -45,28 +41,6 @@ class Browser(QtWidgets.QMainWindow):
     def update_title(self):
         title = self.ui.webView.page().title()
         self.setWindowTitle(f'{title} - MiniBrowser')
-
-    def open_file(self):
-        filename, _ = QFileDialog.getOpenFileName(self, "Open file", "",
-                                                  "Hypertext Markup Language (*.htm *.html);;"
-                                                  "All files (*.*)")
-
-        if filename:
-            with open(filename, 'r') as f:
-                html = f.read()
-
-            self.browser.setHtml(html)
-            self.urlbar.setText(filename)
-
-    def save_file(self):
-        filename, _ = QFileDialog.getSaveFileName(self, "Save Page As", "",
-                                                  "Hypertext Markup Language (*.htm *html);;"
-                                                  "All files (*.*)")
-
-        if filename:
-            html = self.browser.page().toHtml()
-            with open(filename, 'w') as f:
-                f.write(html)
 
 
 if __name__ == '__main__':
