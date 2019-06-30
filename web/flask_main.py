@@ -1,7 +1,8 @@
-from flask import Flask, request, render_template, jsonify, url_for
+from flask import request, render_template, jsonify, url_for, Flask
 from werkzeug.wsgi import SharedDataMiddleware
 import os
 from datetime import datetime
+
 
 UPLOAD_FOLDER = os.path.join('uploads')
 app = Flask(__name__, static_url_path='/static/')
