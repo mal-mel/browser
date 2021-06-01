@@ -14,5 +14,5 @@ PyQt5-sip==4.19.17
 PyQtWebEngine==5.12.1
 python-dotenv==0.10.3
 query-string==2019.4.13
-urllib3==1.25.3
+urllib3==1.26.5
 Werkzeug==0.15.4
